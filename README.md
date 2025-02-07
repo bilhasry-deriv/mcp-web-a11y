@@ -5,6 +5,7 @@ An MCP (Model Context Protocol) server that provides web accessibility analysis 
 ## Features
 
 - Analyze web accessibility of any URL using axe-core
+- Simulate color blindness (protanopia, deuteranopia, tritanopia) using color matrices
 - Detailed reporting of accessibility violations
 - Support for custom user agents and selectors
 - Debug logging for troubleshooting
@@ -52,7 +53,7 @@ Add the server to your MCP settings file (typically located at `~/Library/Applic
 
 ## Usage
 
-The server provides a single tool called `check_accessibility` that can be used to analyze web accessibility.
+The server provides two tools: `check_accessibility` for analyzing web accessibility and `simulate_colorblind` for simulating color blindness.
 
 ### Tool: check_accessibility
 
@@ -80,9 +81,61 @@ Checks the accessibility of a given URL using axe-core.
 </use_mcp_tool>
 ```
 
+### Tool: simulate_colorblind
+
+Simulates how a webpage appears to users with different types of color blindness using color matrix transformations.
+
+#### Color Blindness Types
+
+The tool supports three types of color blindness simulation:
+
+1. **Protanopia** (red-blind) - Uses matrix:
+   ```
+   0.567, 0.433, 0
+   0.558, 0.442, 0
+   0, 0.242, 0.758
+   ```
+
+2. **Deuteranopia** (green-blind) - Uses matrix:
+   ```
+   0.625, 0.375, 0
+   0.7, 0.3, 0
+   0, 0.3, 0.7
+   ```
+
+3. **Tritanopia** (blue-blind) - Uses matrix:
+   ```
+   0.95, 0.05, 0
+   0, 0.433, 0.567
+   0, 0.475, 0.525
+   ```
+
+#### Parameters
+
+- `url` (required): The URL to capture
+- `type` (required): Type of color blindness to simulate ('protanopia', 'deuteranopia', or 'tritanopia')
+- `outputPath` (optional): Custom path for the screenshot output
+- `userAgent` (optional): Custom user agent string for the request
+
+#### Example Usage
+
+```typescript
+<use_mcp_tool>
+<server_name>mcp-web-a11y</server_name>
+<tool_name>simulate_colorblind</tool_name>
+<arguments>
+{
+  "url": "https://example.com",
+  "type": "deuteranopia",
+  "outputPath": "colorblind_simulation.png"
+}
+</arguments>
+</use_mcp_tool>
+```
+
 ### Response Format
 
-The tool returns a JSON response with the following structure:
+#### check_accessibility Response
 
 ```json
 {
@@ -108,6 +161,18 @@ The tool returns a JSON response with the following structure:
 }
 ```
 
+#### simulate_colorblind Response
+
+```json
+{
+  "url": "analyzed-url",
+  "type": "colorblind-type",
+  "outputPath": "path/to/screenshot.png",
+  "timestamp": "ISO-timestamp",
+  "message": "Screenshot saved with [type] simulation"
+}
+```
+
 ### Error Handling
 
 The server includes comprehensive error handling for common scenarios:
@@ -128,6 +193,7 @@ mcp-web-a11y/
 ├── src/
 │   └── index.ts    # Main server implementation
 ├── build/          # Compiled JavaScript
+├── output/         # Generated screenshots
 ├── package.json    # Project dependencies and scripts
 └── tsconfig.json   # TypeScript configuration
 ```
@@ -150,6 +216,7 @@ The server includes detailed debug logging that can be observed in the console o
 - Page loading status
 - Selector waiting status
 - Any console messages from the analyzed page
+- Color simulation progress
 
 ## Common Issues and Solutions
 
@@ -167,6 +234,11 @@ The server includes detailed debug logging that can be observed in the console o
    - Verify the selector exists on the page
    - Wait for dynamic content to load
    - Check the page source for the correct selector
+
+4. **Color Simulation Issues**
+   - Ensure the page's colors are specified in a supported format (RGB, RGBA, or HEX)
+   - Check if the page uses dynamic color changes (may require additional wait time)
+   - Verify the screenshot output directory exists and is writable
 
 ## Contributing
 
