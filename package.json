@@ -1,0 +1,21 @@
+{
+  "name": "mcp-web-a11y",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "start": "node build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "MCP server for web accessibility analysis using axe-core",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.4.1",
+    "@types/node": "^22.13.1",
+    "axe-core": "^4.10.2",
+    "puppeteer": "^24.2.0",
+    "typescript": "^5.7.3"
+  }
+}
