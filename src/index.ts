@@ -45,8 +45,8 @@ class WebA11yServer {
     this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
       tools: [
         {
-          name: 'analyze_url',
-          description: 'Analyze web accessibility of a given URL using axe-core',
+          name: 'check_accessibility',
+          description: 'Check web accessibility of a given URL using axe-core',
           inputSchema: {
             type: 'object',
             properties: {
@@ -70,7 +70,7 @@ class WebA11yServer {
     }));
 
     this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
-      if (request.params.name !== 'analyze_url') {
+      if (request.params.name !== 'check_accessibility') {
         throw new McpError(
           ErrorCode.MethodNotFound,
           `Unknown tool: ${request.params.name}`

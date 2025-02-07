@@ -52,11 +52,11 @@ Add the server to your MCP settings file (typically located at `~/Library/Applic
 
 ## Usage
 
-The server provides a single tool called `analyze_url` that can be used to analyze web accessibility.
+The server provides a single tool called `check_accessibility` that can be used to analyze web accessibility.
 
-### Tool: analyze_url
+### Tool: check_accessibility
 
-Analyzes the accessibility of a given URL using axe-core.
+Checks the accessibility of a given URL using axe-core.
 
 #### Parameters
 
@@ -69,7 +69,7 @@ Analyzes the accessibility of a given URL using axe-core.
 ```typescript
 <use_mcp_tool>
 <server_name>mcp-web-a11y</server_name>
-<tool_name>analyze_url</tool_name>
+<tool_name>check_accessibility</tool_name>
 <arguments>
 {
   "url": "https://example.com",

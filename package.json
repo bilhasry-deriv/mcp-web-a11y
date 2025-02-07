@@ -12,10 +12,13 @@
   "license": "ISC",
   "description": "MCP server for web accessibility analysis using axe-core",
   "dependencies": {
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.4.1",
     "@types/node": "^22.13.1",
+    "@types/puppeteer": "^5.4.7",
     "axe-core": "^4.10.2",
-    "puppeteer": "^24.2.0",
-    "typescript": "^5.7.3"
+    "puppeteer": "^24.2.0"
   }
 }
