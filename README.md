@@ -1,5 +1,7 @@
 # Web Accessibility MCP Server
 
+[![smithery badge](https://smithery.ai/badge/@bilhasry-deriv/mcp-web-a11y)](https://smithery.ai/server/@bilhasry-deriv/mcp-web-a11y)
+
 An MCP (Model Context Protocol) server that provides web accessibility analysis capabilities using axe-core and Puppeteer.
 
 ## Features
@@ -18,6 +20,15 @@ An MCP (Model Context Protocol) server that provides web accessibility analysis 
 
 ## Installation
 
+### Installing via Smithery
+
+To install Web Accessibility MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@bilhasry-deriv/mcp-web-a11y):
+
+```bash
+npx -y @smithery/cli install @bilhasry-deriv/mcp-web-a11y --client claude
+```
+
+### Manual Installation
 1. Clone the repository:
 ```bash
 git clone [repository-url]
