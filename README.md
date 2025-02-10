@@ -2,6 +2,8 @@
 
 An MCP (Model Context Protocol) server that provides web accessibility analysis capabilities using axe-core and Puppeteer.
 
+<a href="https://glama.ai/mcp/servers/mya2mkxy9a"><img width="380" height="200" src="https://glama.ai/mcp/servers/mya2mkxy9a/badge" alt="Web Accessibility Server MCP server" /></a>
+
 ## Features
 
 - Analyze web accessibility of any URL using axe-core
