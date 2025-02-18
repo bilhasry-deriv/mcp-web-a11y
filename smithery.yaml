@@ -1,0 +1,22 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required: []
+    properties:
+      waitForSelector:
+        type: string
+        description: CSS selector to wait for before analysis
+      userAgent:
+        type: string
+        description: Custom user agent string for the request
+      outputPath:
+        type: string
+        description: Custom path for the screenshot output
+  commandFunction:
+    # A function that produces the CLI command to start the MCP on stdio.
+    |-
+    (config) => ({command:'node',args:['build/index.js']})
