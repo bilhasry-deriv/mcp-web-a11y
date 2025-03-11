@@ -58,11 +58,21 @@ Add the server to your MCP settings file (typically located at `~/Library/Applic
       "command": "node",
       "args": ["/path/to/mcp-web-a11y/build/index.js"],
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [],
+      "env": {
+        "MCP_OUTPUT_DIR": "/path/to/output/directory"
+      }
     }
   }
 }
 ```
+
+### Environment Variables
+
+- `MCP_OUTPUT_DIR`: Directory where screenshot outputs will be saved
+  - Required for the `simulate_colorblind` tool
+  - If not specified, defaults to './output' relative to the current working directory
+  - Must be an absolute path when configured in MCP settings
 
 ## Usage
 

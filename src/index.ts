@@ -334,10 +334,10 @@ class WebA11yServer {
       console.error('[Debug] Waiting for filter to apply...');
       await new Promise(resolve => setTimeout(resolve, 2000));
 
-      // Take screenshot
+      // Get output directory from environment variable or use default
+      const outputDir = process.env.MCP_OUTPUT_DIR || './output';
       console.error('[Debug] Taking screenshot...');
-      const outputPath = join('/Users/bilhasryramadhony/Documents/Exploration/mcp-web-a11y/output', 
-        args.outputPath || `colorblind_${args.type}.png`);
+      const outputPath = join(outputDir, args.outputPath || `colorblind_${args.type}.png`);
       
       await page.screenshot({
         path: outputPath,
