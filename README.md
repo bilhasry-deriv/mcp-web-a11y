@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/bilhasry-deriv-mcp-web-a11y-badge.png)](https://mseep.ai/app/bilhasry-deriv-mcp-web-a11y)
+
 # Web Accessibility MCP Server
 
 [![smithery badge](https://smithery.ai/badge/@bilhasry-deriv/mcp-web-a11y)](https://smithery.ai/server/@bilhasry-deriv/mcp-web-a11y)
